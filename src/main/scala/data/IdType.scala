@@ -8,8 +8,3 @@ object IdType {
   def make: IdType = UUID.randomUUID
   def read(str: String): IdType = UUID.fromString(str)
 }
-
-opaque type UserId <: IdType = IdType
-object UserId {
-  def apply(): UserId = IdType.make
-}
