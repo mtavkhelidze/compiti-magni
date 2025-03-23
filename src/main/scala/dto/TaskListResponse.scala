@@ -1,6 +1,9 @@
 package ge.zgharbi.todocat
 package dto
 
-import data.TaskItem
+import zio.json.*
 
-case class TaskListResponse(tasks: List[TaskItem])
+case class TaskListResponse(tasks: List[TaskItemDTO])
+
+object TaskListResponse:
+  given JsonCodec[TaskListResponse] = DeriveJsonCodec.gen
