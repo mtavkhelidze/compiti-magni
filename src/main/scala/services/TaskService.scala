@@ -1,7 +1,7 @@
 package ge.zgharbi.todocat
 package services
 
-import data.{IdType, TaskItem, TaskItemId}
+import data.TaskItem
 import effect.GenId
 
 import zio.*
@@ -15,7 +15,9 @@ object TaskService {
     ZLayer.fromFunction { (genId: GenId) =>
       new TaskService {
         def create(title: String, description: String): Task[TaskItem] = {
-          genId.make[TaskItemId].map(id => TaskItem(id, title, description))
+          genId.make[TaskItem.Id].map(id => 
+            TaskItem(id, TaskItem.Title(title), TaskItem.Body(description))
+          )
         }
       }
     }

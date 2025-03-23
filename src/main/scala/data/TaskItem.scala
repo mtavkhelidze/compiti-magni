@@ -1,12 +1,26 @@
 package ge.zgharbi.todocat
 package data
 
-import effect.GenId
-opaque type TaskItemId <: IdType = IdType
+import TaskItem.*
 
-case class TaskItem(id: TaskItemId, title: String, description: String, isDone: Boolean)
+case class TaskItem(
+  id: Id,
+  title: Title,
+  description: Body,
+  isDone: Boolean,
+)
 
 object TaskItem {
-  def apply(id: TaskItemId, title: String, description: String): TaskItem =
-    new TaskItem(id, title, description, false)
+  opaque type Id <: IdType = IdType
+  opaque type Title <: String = String
+  object Title {
+    def apply(title: String): Title = title
+  }
+  opaque type Body <: String = String
+  object Body {
+    def apply(body: String): Body = body
+  }
+
+  def apply(id: TaskItem.Id, title: Title, body: Body): TaskItem =
+    new TaskItem(id, title, body, false)
 }
