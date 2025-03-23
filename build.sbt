@@ -11,6 +11,8 @@ lazy val root = project
     libraryDependencies ++= Seq(
       "ch.qos.logback" % "logback-classic" % "1.5.18",
       "dev.zio" %% "zio" % "2.1.16",
+      "dev.zio" %% "zio-test" % "2.1.16" % Test,
+      "dev.zio" %% "zio-test-sbt" % "2.1.16" % Test,
     ),
     scalacOptions ++= Seq(
       "-Xfatal-warnings", // Treat warnings as errors
