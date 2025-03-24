@@ -15,6 +15,7 @@ lazy val root = project
       "dev.zio" %% "zio-json" % "0.7.39",
       "dev.zio" %% "zio-logging" % "2.5.0",
       "dev.zio" %% "zio-logging-slf4j" % "2.5.0",
+      "dev.zio" %% "zio-prelude" % "1.0.0-RC39",
       "dev.zio" %% "zio-test" % "2.1.16" % Test,
       "dev.zio" %% "zio-test-sbt" % "2.1.16" % Test,
     ),
