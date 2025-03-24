@@ -1,5 +1,5 @@
 package ge.zgharbi.todocat
-package dto
+package dto.tasks
 
 import data.TaskItem
 

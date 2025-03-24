@@ -1,9 +1,10 @@
 package ge.zgharbi.todocat
-package lib.validation
+package lib
+
+import lib.validation.StringValidation.*
 
 import zio.prelude.Validation
 import zio.test.*
-
 object StringValidationsTest extends ZIOSpecDefault {
 
   def spec = suite("String Validations Test")(

@@ -1,6 +1,7 @@
 package ge.zgharbi.todocat
-package dto
+package dto.tasks
 
+import dto.tasks.TaskItemDTO
 import effect.GenId
 import services.TaskService
 

@@ -1,9 +1,18 @@
 package ge.zgharbi.todocat
 package modules.tasks
 
-import zio.prelude.NonEmptyList
+import data.ModuleError
 
-type TaskModuleError = NonEmptyList[TaskValidationError]
+import scala.compiletime.constValue
 
-enum TaskValidationError:
-  case TitleTooLong, DescriptionTooLong, TitleTooShort, DescriptionTooShort
+sealed trait TaskModuleError[T] extends ModuleError[T]
+
+case class TitleValidationError(
+  override val message: String,
+  override val issues: List[String],
+) extends TaskModuleError[TitleValidationError]
+
+case class BodyValidationError(
+  override val message: String,
+  override val issues: List[String],
+) extends TaskModuleError[BodyValidationError]

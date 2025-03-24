@@ -1,9 +1,9 @@
 package ge.zgharbi.todocat
-package lib
+package lib.validation
 
 import zio.prelude.Validation
 
-package object validation {
+object StringValidation {
 
   def isLengthBetween(min: Int, max: Int)(
     s: String,
