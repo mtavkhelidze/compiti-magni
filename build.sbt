@@ -10,6 +10,8 @@ lazy val root = project
     testFrameworks += new TestFramework("weaver.framework.CatsEffect"),
     libraryDependencies ++= Seq(
       "ch.qos.logback" % "logback-classic" % "1.5.18",
+      "com.softwaremill.sttp.tapir" %% "tapir-json-zio" % "1.11.20",
+      "com.softwaremill.sttp.tapir" %% "tapir-zio-http-server" % "1.11.20",
       "dev.zio" %% "zio" % "2.1.16",
       "dev.zio" %% "zio-http" % "3.1.0",
       "dev.zio" %% "zio-json" % "0.7.39",

@@ -1,7 +1,9 @@
 package ge.zgharbi.todocat
-package managers.tasks
+package algebra.task
 
-import data.DomainError
+import algebra.DomainError
+
+import com.sun.tools.javac.code.TypeTag
 
 import scala.compiletime.constValue
 

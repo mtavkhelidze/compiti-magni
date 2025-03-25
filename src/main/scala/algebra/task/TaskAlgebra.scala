@@ -1,10 +1,7 @@
 package ge.zgharbi.todocat
-package managers.tasks
+package algebra.task
 
-
-import data.TaskItem
-import effect.GenId
-
+import ge.zgharbi.todocat.algebra.DomainId
 import zio.*
 
 trait TasksManager {
@@ -12,8 +9,8 @@ trait TasksManager {
 }
 
 object TasksManager {
-  def live: ZLayer[GenId, Nothing, TasksManager] =
-    ZLayer.fromFunction { (genId: GenId) =>
+  def live: ZLayer[DomainId, Nothing, TasksManager] =
+    ZLayer.fromFunction { (genId: DomainId) =>
       new TasksManager {
         def create(title: String, description: String): Task[TaskItem] = {
           genId.make[TaskItem.Id].map(id => 

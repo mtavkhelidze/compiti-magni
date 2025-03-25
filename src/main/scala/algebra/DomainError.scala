@@ -1,15 +1,14 @@
 package ge.zgharbi.todocat
-package data
+package algebra
 
-import scala.compiletime.constValue
-import scala.reflect.{classTag, ClassManifest, ClassTag}
+import scala.reflect.{classTag, ClassTag}
 import scala.util.control.NoStackTrace
 
-trait DomainError[Module: ClassTag] extends Exception, NoStackTrace {
+trait DomainError[T: ClassTag] extends Exception, NoStackTrace {
   val message: String
   val issues: List[String] = Nil
 
-  inline def key = classTag[Module].runtimeClass.getSimpleName
+  inline def key = classTag[T].runtimeClass.getSimpleName
 
   override def getMessage: String = message
 

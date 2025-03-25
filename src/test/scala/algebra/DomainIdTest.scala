@@ -1,28 +1,26 @@
 package ge.zgharbi.todocat
-package effect
-
-import data.IdType
+package algebra
 
 import zio.*
 import zio.test.*
 import zio.test.Assertion.*
 
-opaque type TestIdType <: IdType = IdType
+opaque type TestIdType <: DomainIdType = DomainIdType
 
-object GenIdTest extends ZIOSpecDefault {
+object DomainIdTest extends ZIOSpecDefault {
   def spec =
-    suite("GenId Suite")(
+    suite("DomainId Suite")(
       test("maker returns correct type") {
         ZIO
-          .service[GenId]
+          .service[DomainId]
           .flatMap(_.make[TestIdType])
           .map(id => assertTrue(id.isInstanceOf[TestIdType]))
       },
       test("make returns correct string") {
         ZIO
-          .service[GenId]
+          .service[DomainId]
           .flatMap(_.make[TestIdType])
-          .map(id => assert(id.toString)(equalTo(GenId.onlyZeroes.toString)))
+          .map(id => assert(id.toString)(equalTo(DomainId.onlyZeroes.toString)))
       },
-    ).provideLayer(GenId.test)
+    ).provideLayer(DomainId.test)
 }

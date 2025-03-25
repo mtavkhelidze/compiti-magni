@@ -1,22 +1,22 @@
 package ge.zgharbi.todocat
-package managers.tasks
+package algebra.task
 
-import effect.GenId
+import algebra.DomainId
 
 import zio.*
 import zio.test.*
 import zio.test.Assertion.*
 
-object TasksManagerTest extends ZIOSpecDefault {
+object TaskAlgebraTest extends ZIOSpecDefault {
   def spec =
-    suite("TaskService Suite")(
+    suite("TaskAlgebra Suite")(
       test("create should generate TaskItem with correct ID") {
         ZIO
           .service[TasksManager]
           .flatMap(_.create("Test Task", "Test Description"))
           .map(taskItem =>
-            assert(taskItem.id.toString)(equalTo(GenId.onlyZeroes.toString)),
+            assert(taskItem.id.toString)(equalTo(DomainId.onlyZeroes.toString)),
           )
       },
-    ).provideLayer(GenId.test >>> TasksManager.live)
+    ).provideLayer(DomainId.test >>> TasksManager.live)
 }

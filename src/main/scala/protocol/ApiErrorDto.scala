@@ -1,8 +1,8 @@
 package ge.zgharbi.todocat
 package protocol
 
-import data.DomainError
-import ge.zgharbi.todocat.managers.tasks.TitleValidationError
+import algebra.task.TitleValidationError
+import algebra.DomainError
 
 import zio.http.Status
 import zio.json.*
@@ -27,7 +27,7 @@ object ApiErrorDto {
     ApiErrorDto(
       code = e.statusCode.code,
       message = e.message,
-      key = e.key,
+      key = e.key.toString,
       issues = e.issues,
     )
   }

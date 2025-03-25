@@ -1,8 +1,8 @@
 package ge.zgharbi.todocat
 package protocol.tasks
 
-import effect.GenId
-import managers.tasks.TasksManager
+import ge.zgharbi.todocat.algebra.task.TasksManager
+import ge.zgharbi.todocat.algebra.DomainId
 
 import zio.*
 import zio.test.*
@@ -20,7 +20,7 @@ object TaskItemDtoTest extends ZIOSpecDefault {
             assert(dto)(
               equalTo(
                 TaskItemDto(
-                  GenId.onlyZeroes.toString,
+                  DomainId.onlyZeroes.toString,
                   "title",
                   "description",
                   false,
@@ -29,5 +29,5 @@ object TaskItemDtoTest extends ZIOSpecDefault {
             ),
           )
       }
-    }.provideLayer(GenId.test >>> TasksManager.live)
+    }.provideLayer(DomainId.test >>> TasksManager.live)
 }
