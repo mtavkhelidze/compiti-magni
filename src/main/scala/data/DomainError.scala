@@ -5,7 +5,7 @@ import scala.compiletime.constValue
 import scala.reflect.{classTag, ClassManifest, ClassTag}
 import scala.util.control.NoStackTrace
 
-trait ModuleError[Module: ClassTag] extends Exception, NoStackTrace {
+trait DomainError[Module: ClassTag] extends Exception, NoStackTrace {
   val message: String
   val issues: List[String] = Nil
 

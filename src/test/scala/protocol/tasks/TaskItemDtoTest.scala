@@ -1,26 +1,25 @@
 package ge.zgharbi.todocat
-package dto.tasks
+package protocol.tasks
 
-import dto.tasks.TaskItemDTO
 import effect.GenId
-import services.TaskService
+import managers.tasks.TasksManager
 
 import zio.*
 import zio.test.*
 import zio.test.Assertion.*
 
-object TaskItemDTOTest extends ZIOSpecDefault {
+object TaskItemDtoTest extends ZIOSpecDefault {
   def spec =
     suite("TaskItemDTO Suite") {
       test("can create TaskItemDTO from TaskItem with correct id") {
         ZIO
-          .service[TaskService]
+          .service[TasksManager]
           .flatMap(_.create("title", "description"))
-          .map(TaskItemDTO.apply)
+          .map(TaskItemDto.apply)
           .map(dto =>
             assert(dto)(
               equalTo(
-                TaskItemDTO(
+                TaskItemDto(
                   GenId.onlyZeroes.toString,
                   "title",
                   "description",
@@ -30,5 +29,5 @@ object TaskItemDTOTest extends ZIOSpecDefault {
             ),
           )
       }
-    }.provideLayer(GenId.test >>> TaskService.live)
+    }.provideLayer(GenId.test >>> TasksManager.live)
 }

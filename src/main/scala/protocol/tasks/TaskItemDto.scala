@@ -1,24 +1,24 @@
 package ge.zgharbi.todocat
-package dto.tasks
+package protocol.tasks
 
 import data.TaskItem
 
 import zio.json.*
 
-case class TaskItemDTO(
+case class TaskItemDto(
   id: String,
   title: String,
   description: String,
   isDone: Boolean,
 )
 
-object TaskItemDTO {
+object TaskItemDto {
   import TaskItem.*
 
-  given JsonCodec[TaskItemDTO] = DeriveJsonCodec.gen
+  given JsonCodec[TaskItemDto] = DeriveJsonCodec.gen
 
-  def apply(ti: TaskItem): TaskItemDTO =
-    TaskItemDTO(
+  def apply(ti: TaskItem): TaskItemDto =
+    TaskItemDto(
       id = ti.id.toString,
       title = ti.title,
       description = ti.description,

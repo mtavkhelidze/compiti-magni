@@ -1,14 +1,14 @@
 package ge.zgharbi.todocat
-package dto.tasks
+package protocol
 
-import dto.tasks.TaskModuleErrorDTO
+import ge.zgharbi.todocat.managers.tasks.{BodyValidationError, TitleValidationError}
 
-import ge.zgharbi.todocat.modules.tasks.{BodyValidationError, TaskModuleError, TitleValidationError}
 import zio.*
-import zio.test.{Gen, *}
+import zio.http.Status
+import zio.test.*
 import zio.test.Assertion.*
 
-object TaskModuleErrorDTOTest extends ZIOSpecDefault {
+object ApiErrorDtoTest extends ZIOSpecDefault {
 
   // Gen for List[String] (validation issues)
   val issuesGen: Gen[Any, List[String]] = Gen.listOf(Gen.alphaNumericString)
@@ -46,7 +46,8 @@ object TaskModuleErrorDTOTest extends ZIOSpecDefault {
     suite("TaskModuleErrorDTO Test")(
       test("should convert TitleValidationError to TaskModuleErrorDTO") {
         check(titleValidationErrorGen) { error =>
-          val dto = TaskModuleErrorDTO(error)
+          val dto = ApiErrorDto(error)
+          assert(dto.code)(equalTo(Status.Created.code)) &&
           assert(dto.message)(equalTo(error.message)) &&
           assert(dto.key)(equalTo("TitleValidationError")) &&
           assert(dto.issues)(equalTo(error.issues))
@@ -54,7 +55,7 @@ object TaskModuleErrorDTOTest extends ZIOSpecDefault {
       },
       test("should convert BodyValidationError to TaskModuleErrorDTO") {
         check(bodyValidationErrorGen) { error =>
-          val dto = TaskModuleErrorDTO(error)
+          val dto = ApiErrorDto(error)
           assert(dto.message)(equalTo(error.message)) &&
           assert(dto.key)(equalTo("BodyValidationError")) &&
           assert(dto.issues)(equalTo(error.issues))

@@ -1,18 +1,18 @@
 package ge.zgharbi.todocat
-package modules.tasks
+package managers.tasks
 
-import data.ModuleError
+import data.DomainError
 
 import scala.compiletime.constValue
 
-sealed trait TaskModuleError[T] extends ModuleError[T]
+sealed trait TasksError[T] extends DomainError[T]
 
 case class TitleValidationError(
   override val message: String,
   override val issues: List[String],
-) extends TaskModuleError[TitleValidationError]
+) extends TasksError[TitleValidationError]
 
 case class BodyValidationError(
   override val message: String,
   override val issues: List[String],
-) extends TaskModuleError[BodyValidationError]
+) extends TasksError[BodyValidationError]
