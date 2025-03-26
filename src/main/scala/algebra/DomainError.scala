@@ -5,8 +5,8 @@ import scala.reflect.{classTag, ClassTag}
 import scala.util.control.NoStackTrace
 
 trait DomainError[T: ClassTag] extends Exception, NoStackTrace {
-  val message: String
-  val issues: List[String] = Nil
+  def message: String
+  def issues: List[String] = Nil
 
   inline def key = classTag[T].runtimeClass.getSimpleName
 

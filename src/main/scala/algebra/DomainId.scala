@@ -5,6 +5,7 @@ import zio.*
 
 import java.util.UUID
 
+// @misha: this can be improved by separating UUID backend and DomainId
 opaque type DomainIdType = UUID
 
 object DomainIdType {
