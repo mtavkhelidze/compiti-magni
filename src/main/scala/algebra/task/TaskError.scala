@@ -1,13 +1,13 @@
 package ge.zgharbi.todocat
 package algebra.task
 
-import algebra.DomainError
+import algebra.AlgebraError
 
 import com.sun.tools.javac.code.TypeTag
 
 import scala.compiletime.constValue
 
-sealed trait TasksError[T] extends DomainError[T]
+sealed trait TasksError[T] extends AlgebraError[T]
 
 case class TitleValidationError(
   override val message: String,

@@ -2,7 +2,7 @@ package ge.zgharbi.todocat
 package protocol
 
 import algebra.task.TitleValidationError
-import algebra.DomainError
+import algebra.AlgebraError
 
 import zio.http.Status
 import zio.json.*
@@ -17,13 +17,13 @@ case class ApiErrorDto(
 )
 
 object ApiErrorDto {
-  extension [E <: DomainError[E]](e: E) {
+  extension [E <: AlgebraError[E]](e: E) {
     inline def statusCode: Status = e match {
       case _: TitleValidationError => Status.Created
       case _                       => Status.fromInt(400)
     }
   }
-  inline def apply[E <: DomainError[E]](e: E): ApiErrorDto = {
+  inline def apply[E <: AlgebraError[E]](e: E): ApiErrorDto = {
     ApiErrorDto(
       code = e.statusCode.code,
       message = e.message,

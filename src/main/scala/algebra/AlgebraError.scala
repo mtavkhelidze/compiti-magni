@@ -4,7 +4,7 @@ package algebra
 import scala.reflect.{classTag, ClassTag}
 import scala.util.control.NoStackTrace
 
-trait DomainError[T: ClassTag] extends Exception, NoStackTrace {
+trait AlgebraError[T: ClassTag] extends Exception, NoStackTrace {
   def message: String
   def issues: List[String] = Nil
 
