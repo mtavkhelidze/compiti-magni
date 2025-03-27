@@ -3,7 +3,15 @@ package domain
 
 import scala.quoted.*
 
-sealed trait DomainError[A]:
+trait WithIssues {
+  def issues: List[String]
+}
+
+trait WithCause {
+  def cause: Option[Throwable] = None
+}
+
+trait DomainError[A]:
   def error: String
   def module: String
 
