@@ -1,7 +1,7 @@
 package ge.zgharbi.todocat
 package algebra.task
 
-import ge.zgharbi.todocat.algebra.DomainId
+import ge.zgharbi.todocat.domain.DomainId
 import zio.*
 
 trait TasksManager {

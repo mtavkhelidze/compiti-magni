@@ -1,7 +1,7 @@
 package ge.zgharbi.todocat
 
 import ge.zgharbi.todocat.algebra.task.TasksManager
-import ge.zgharbi.todocat.algebra.DomainId
+import ge.zgharbi.todocat.domain.DomainId
 
 import zio.*
 

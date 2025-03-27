@@ -1,8 +1,7 @@
 package ge.zgharbi.todocat
 package algebra.task
 
-import algebra.DomainId
-
+import ge.zgharbi.todocat.domain.DomainId
 import zio.*
 import zio.test.*
 import zio.test.Assertion.*

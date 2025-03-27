@@ -1,6 +1,7 @@
 package ge.zgharbi.todocat
 package algebra
 
+import ge.zgharbi.todocat.domain.{DomainId, DomainIdType}
 import zio.*
 import zio.test.*
 import zio.test.Assertion.*

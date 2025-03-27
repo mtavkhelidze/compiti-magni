@@ -2,7 +2,7 @@ package ge.zgharbi.todocat
 package protocol.tasks
 
 import ge.zgharbi.todocat.algebra.task.TasksManager
-import ge.zgharbi.todocat.algebra.DomainId
+import ge.zgharbi.todocat.domain.DomainId
 
 import zio.*
 import zio.test.*

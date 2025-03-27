@@ -1,5 +1,5 @@
 package ge.zgharbi.todocat
-package algebra
+package domain
 
 import zio.*
 
