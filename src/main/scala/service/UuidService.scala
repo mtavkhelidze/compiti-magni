@@ -16,7 +16,7 @@ type CannotCreate = CannotCreate.type
 case class CannotParse(override val cause: Option[Throwable]) extends UuidError
 
 trait UuidService {
-  def create: IO[UuidError, UUID]
+  def random: IO[UuidError, UUID]
   def parse(str: String): IO[UuidError, UUID]
 }
 //
@@ -24,7 +24,7 @@ object UuidService {
   def live: ZLayer[Any, Nothing, UuidService] =
     ZLayer.succeed(new UuidService {
 
-      def create: IO[UuidError, UUID] =
+      def random: IO[UuidError, UUID] =
         ZIO
           .fromTry(Try(UUID.randomUUID))
           .mapError(e => CannotCreate)

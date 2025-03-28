@@ -14,19 +14,19 @@ object UuidServiceSpec extends ZIOSpecDefault {
       test("create generates a UUID successfully") {
         ZIO
           .service[UuidService]
-          .flatMap(_.create)
+          .flatMap(_.random)
           .map(uuid => assert(uuid)(isSubtype[UUID](anything)))
       },
       test("create fails with CannotCreate error") {
         val layer = ZLayer.succeed(new UuidService {
-          def create: IO[UuidError, UUID] =
+          def random: IO[UuidError, UUID] =
             ZIO.fail(CannotCreate)
           def parse(str: String): IO[UuidError, UUID] =
             ZIO.fail(CannotParse(Some(new Exception("Parse error"))))
         })
         ZIO
           .service[UuidService]
-          .flatMap(_.create)
+          .flatMap(_.random)
           .provideLayer(layer)
           .either
           .map(assert(_)(isLeft(isSubtype[CannotCreate](anything))))

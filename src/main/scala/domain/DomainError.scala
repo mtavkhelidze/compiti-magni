@@ -3,6 +3,9 @@ package domain
 
 import scala.quoted.*
 
+trait WithMessage {
+  def message: String
+}
 trait WithIssues {
   def issues: List[String]
 }
