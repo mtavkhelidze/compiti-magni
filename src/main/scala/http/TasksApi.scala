@@ -3,7 +3,7 @@ package http
 
 import protocol.tasks.*
 import protocol.ApiErrorDto
-import ge.zgharbi.todocat.algebra.task.TasksManager
+import ge.zgharbi.todocat.managers.task.TasksManager
 
 import sttp.tapir.generic.auto.*
 import sttp.tapir.ztapir.*

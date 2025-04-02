@@ -1,7 +1,7 @@
 package ge.zgharbi.todocat
 package protocol.tasks
 
-import algebra.task.*
+import managers.task.*
 import protocol.ApiErrorDto
 
 import zio.*

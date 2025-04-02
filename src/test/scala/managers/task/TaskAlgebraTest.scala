@@ -1,5 +1,5 @@
 package ge.zgharbi.todocat
-package algebra.task
+package managers.task
 
 import ge.zgharbi.todocat.domain.DomainId
 import zio.*

@@ -1,7 +1,7 @@
 package ge.zgharbi.todocat
-package algebra.task
+package managers.task
 
-import algebra.task.TaskItem.*
+import managers.task.TaskItem.*
 import ge.zgharbi.todocat.domain.DomainIdType
 
 case class TaskItem(id: Id, title: Title, description: Body, isDone: Boolean)

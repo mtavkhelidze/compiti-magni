@@ -1,5 +1,5 @@
 package ge.zgharbi.todocat
-package algebra
+package managers
 
 import scala.reflect.{classTag, ClassTag}
 import scala.util.control.NoStackTrace

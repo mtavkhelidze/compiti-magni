@@ -1,7 +1,7 @@
 package ge.zgharbi.todocat
 package protocol.tasks
 
-import ge.zgharbi.todocat.algebra.task.TaskItem
+import ge.zgharbi.todocat.managers.task.TaskItem
 import zio.json.*
 
 case class TaskItemDto(

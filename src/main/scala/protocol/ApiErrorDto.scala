@@ -1,8 +1,8 @@
 package ge.zgharbi.todocat
 package protocol
 
-import algebra.task.TitleValidationError
-import algebra.AlgebraError
+import managers.task.TitleValidationError
+import managers.AlgebraError
 
 import zio.http.Status
 import zio.json.*

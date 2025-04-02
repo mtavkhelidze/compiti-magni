@@ -1,7 +1,7 @@
 package ge.zgharbi.todocat
-package algebra.task
+package managers.task
 
-import algebra.AlgebraError
+import managers.AlgebraError
 
 import com.sun.tools.javac.code.TypeTag
 
