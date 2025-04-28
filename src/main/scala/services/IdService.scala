@@ -1,23 +1,35 @@
 package ge.zgharbi.todocat
 package services
-import domain.UniId
+
+import domain.{DomainError, UniId, WithMessage}
 
 import zio.*
 
 import java.util.UUID
+import scala.util.Try
+
+sealed trait IdServiceError extends WithMessage derives DomainError
+case class InvalidIdTring(override val message: String) extends IdServiceError
 
 trait IdService {
-  def make: IO[Throwable, UniId.IdType]
+  def make[A: UniId]: IO[IdServiceError, A]
+  def read[A: UniId](s: String): IO[IdServiceError, A]
 }
 
 object IdService {
-  def integer = ZLayer.succeed(new IdService {
-    def make: IO[Throwable, UniId.IdType] =
-      ZIO.succeed(1).map(UniId.toIdType)
-  })
+  val uuid = ZLayer.fromFunction(() => new UuidBackend)
+}
 
-  def uuid = ZLayer.succeed(new IdService {
-    def make: IO[Throwable, UniId.IdType] =
-      ZIO.succeed(UUID.randomUUID()).map(UniId.toIdType)
-  })
+class UuidBackend extends IdService {
+  override def make[A: UniId]: IO[IdServiceError, A] =
+    ZIO
+      .fromTry(Try(UUID.randomUUID))
+      .mapError(_ => InvalidIdTring(s"Invalid UUID"))
+      .map(UniId[A].id.get)
+
+  override def read[A: UniId](s: String): IO[IdServiceError, A] =
+    ZIO
+      .fromTry(Try(UUID.fromString(s)))
+      .mapError(_ => InvalidIdTring(s"Invalid string: $s"))
+      .map(UniId[A].id.get)
 }

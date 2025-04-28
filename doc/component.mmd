@@ -1,0 +1,13 @@
+graph TD
+    subgraph Frontend
+        A[Elm Web App] -->|REST API| B[Backend API]
+    end
+
+    subgraph Backend
+        B -->|Smart Contract Interactions| C[Scalus Backend]
+        C -->|Blockchain Interaction| D[Blockfrost API]
+    end
+
+    subgraph Blockchain
+        D -->|Interacts with Cardano Blockchain| E[Cardano Smart Contract]
+    end

@@ -9,17 +9,17 @@ lazy val root = project
     idePackagePrefix := Some("ge.zgharbi.todocat"),
     testFrameworks += new TestFramework("weaver.framework.CatsEffect"),
     libraryDependencies ++= Seq(
-      "com.softwaremill.sttp.tapir" %% "tapir-json-zio" % "1.11.21",
-      "com.softwaremill.sttp.tapir" %% "tapir-zio-http-server" % "1.11.21",
-      "dev.zio" %% "zio" % "2.1.16",
+      "com.softwaremill.sttp.tapir" %% "tapir-json-zio" % "1.11.25",
+      "com.softwaremill.sttp.tapir" %% "tapir-zio-http-server" % "1.11.25",
+      "dev.zio" %% "zio" % "2.1.17",
       "dev.zio" %% "zio-http" % "3.2.0",
-      "dev.zio" %% "zio-json" % "0.7.39",
+      "dev.zio" %% "zio-json" % "0.7.42",
       "dev.zio" %% "zio-logging" % "2.5.0",
       "dev.zio" %% "zio-logging-slf4j" % "2.5.0",
       "dev.zio" %% "zio-prelude" % "1.0.0-RC39",
-      "dev.zio" %% "zio-test" % "2.1.16" % Test,
+      "dev.zio" %% "zio-test" % "2.1.17" % Test,
       "ch.qos.logback" % "logback-classic" % "1.5.18",
-      "dev.zio" %% "zio-test-sbt" % "2.1.16" % Test,
+      "dev.zio" %% "zio-test-sbt" % "2.1.17" % Test,
     ),
     scalacOptions ++= Seq(
       "-Xfatal-warnings", // Treat warnings as errors

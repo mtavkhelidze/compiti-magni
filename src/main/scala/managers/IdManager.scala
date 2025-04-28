@@ -1,22 +1,22 @@
 package ge.zgharbi.todocat
 package managers
-import domain.UniId
+
+import domain.{DomainError, UniId}
 import services.IdService
 
 import zio.*
 
 trait IdManager {
-  def create[T <: UniId.IdType]: IO[Throwable, T]
+  def create[T : UniId]: IO[Throwable, T]
 }
 
 object IdManager {
-  def live = ZLayer
-    .succeed(new IdManager {
-      def create[T <: UniId.IdType]: IO[Throwable, T] =
-        ZIO
-          .service[IdService]
-          .flatMap(_.make)
-          .flatMap(UniId.fromIdType[T])
-          .provideLayer(IdService.uuid)
-    })
+//  def live: TaskLayer[IdManager] = ZLayer
+//    .succeed(new IdManager {
+//      def create[T : UniId]: IO[Throwable, T] =
+//        ZIO
+//          .service[IdService]
+//          .flatMap(_.make)
+//          .provideLayer(IdService.test)
+//    })
 }

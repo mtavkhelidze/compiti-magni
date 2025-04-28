@@ -14,6 +14,7 @@ enum EnumError derives DomainError {
 }
 
 object DomainErrorTest extends ZIOSpecDefault {
+  import DomainError.*
   def spec = suite("Domain Error Suite")(
     test("deriving sealed trait has correct service tag") {
       val (e1, e2) = (SealedTraitErrorOne, SealedTraitErrorTwo("msg"))

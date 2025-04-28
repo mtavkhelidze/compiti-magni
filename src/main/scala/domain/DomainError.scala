@@ -18,17 +18,12 @@ trait DomainError[A]:
   def error: String
   def module: String
 
-extension [A: DomainError, B <: A](e: B)
-  inline def error: String = DomainError.derivedError[B].error
-  inline def module: String = summon[DomainError[A]].module
-
 object DomainError {
   inline given derived[A]: DomainError[A] = ${ deriveImpl[A](true) }
-  inline def derivedError[A]: DomainError[A] = ${ deriveImpl[A](false) }
 
   private def deriveImpl[A: Type](
     onlySealed: Boolean,
-  )(using Quotes): Expr[DomainError[A]] = {
+  )(using quotes: Quotes): Expr[DomainError[A]] = {
     import quotes.reflect.*
     val symbol = TypeRepr.of[A].typeSymbol
     if onlySealed && (!symbol.isClassDef || !(symbol.flags
@@ -37,7 +32,7 @@ object DomainError {
       report.errorAndAbort(
         s"DomainError can only be derived for sealed traits or enums, but ${symbol.fullName} is not.",
       )
-    val typeName = symbol.name
+    val typeName = symbol.name.replace("$", "")
     '{
       new DomainError[A] {
         def error: String = ${
@@ -49,4 +44,10 @@ object DomainError {
       }
     }
   }
+
+  extension [A: DomainError, B <: A](_: B)
+    inline def error: String = DomainError.derivedError[B].error
+    inline def module: String = summon[DomainError[A]].module
+
+  private inline def derivedError[A]: DomainError[A] = ${ deriveImpl[A](false) }
 }

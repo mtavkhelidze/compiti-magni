@@ -1,13 +1,13 @@
 package ge.zgharbi.todocat
 package managers.task
 
+import domain.{DomainIdType, UniId}
 import managers.task.TaskItem.*
-import ge.zgharbi.todocat.domain.DomainIdType
 
 case class TaskItem(id: Id, title: Title, description: Body, isDone: Boolean)
 
 object TaskItem {
-  opaque type Id <: DomainIdType = DomainIdType
+  opaque type Id  = String
   opaque type Title <: String = String
   opaque type Body <: String = String
 

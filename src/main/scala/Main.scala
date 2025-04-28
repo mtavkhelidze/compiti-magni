@@ -1,17 +1,27 @@
 package ge.zgharbi.todocat
 
-import ge.zgharbi.todocat.managers.task.TasksManager
-import ge.zgharbi.todocat.domain.DomainId
+import domain.DomainError
+import domain.DomainError.*
 
 import zio.*
 
-object Main extends ZIOAppDefault {
-  private val appLayer: ZLayer[Any, Nothing, TasksManager] =
-    DomainId.live >>> TasksManager.live
+sealed trait SealedTraitError derives DomainError
+case object SealedTraitErrorOne extends SealedTraitError
+final case class SealedTraitErrorTwo(msg: String) extends SealedTraitError
 
-  override def run: ZIO[Any, Throwable, Unit] =
-    ZIO
-      .serviceWithZIO[TasksManager](_.create("t1", "d1"))
-      .flatMap(Console.printLine(_))
-      .provideLayer(appLayer)
+object Main extends ZIOAppDefault {
+//  private val appLayer =
+//    IdManager.live >+> TaskManager.live
+
+  override def run = {
+    Console.printLine("Module: " + SealedTraitErrorOne.module) *>
+      Console.printLine("Error : " + SealedTraitErrorOne.error)
+//    ZIO
+//      .service[TaskManager]
+//      .flatMap(_.create("Test Task", "Test Description"))
+//      .map(TaskItemDto.apply)
+//      .map(_.toString)
+//      .flatMap(t => ZIO.succeed(println(t)))
+//      .provide(appLayer)
+  }
 }

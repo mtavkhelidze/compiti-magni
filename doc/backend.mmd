@@ -1,0 +1,11 @@
+graph LR
+    subgraph Backend
+        B[API Server]
+        C[Smart Contract Logic]
+        D[Blockchain Interaction:: Blockfrost API]
+        E[Database::Optional]
+        B -->|Handles API Requests| C
+        C -->|Interacts with Smart Contract| D
+        D -->|Sends Transactions to Blockchain| F[Cardano Blockchain]
+        B -->|Optionally stores data| E
+    end
