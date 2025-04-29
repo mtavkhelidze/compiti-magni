@@ -1,7 +1,7 @@
-package ge.zgharbi.todocat
+package ge.zgharbi.ms.id
 package managers
 
-import ge.zgharbi.todocat.domain.{DomainId, DomainIdType}
+import domain.{DomainId, DomainIdType}
 import zio.*
 import zio.test.*
 import zio.test.Assertion.*

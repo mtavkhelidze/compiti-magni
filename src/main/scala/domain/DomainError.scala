@@ -1,4 +1,4 @@
-package ge.zgharbi.todocat
+package ge.zgharbi.ms.id
 package domain
 
 import scala.quoted.*
@@ -45,7 +45,7 @@ object DomainError {
     }
   }
 
-  extension [A: DomainError, B <: A](_: B)
+  extension [A: DomainError, B <: A](_b: B)
     inline def error: String = DomainError.derivedError[B].error
     inline def module: String = summon[DomainError[A]].module
 

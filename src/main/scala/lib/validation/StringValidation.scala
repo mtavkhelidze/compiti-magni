@@ -1,4 +1,4 @@
-package ge.zgharbi.todocat
+package ge.zgharbi.ms.id
 package lib.validation
 
 import zio.prelude.Validation

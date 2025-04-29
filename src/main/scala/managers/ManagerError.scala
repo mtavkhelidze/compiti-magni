@@ -1,10 +1,10 @@
-package ge.zgharbi.todocat
+package ge.zgharbi.ms.id
 package managers
 
 import scala.reflect.{classTag, ClassTag}
 import scala.util.control.NoStackTrace
 
-trait AlgebraError[T: ClassTag] extends Exception, NoStackTrace {
+trait ManagerError[T: ClassTag] extends Exception, NoStackTrace {
   def message: String
   def issues: List[String] = Nil
 

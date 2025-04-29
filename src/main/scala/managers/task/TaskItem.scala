@@ -1,4 +1,4 @@
-package ge.zgharbi.todocat
+package ge.zgharbi.ms.id
 package managers.task
 
 import domain.{DomainIdType, UniId}

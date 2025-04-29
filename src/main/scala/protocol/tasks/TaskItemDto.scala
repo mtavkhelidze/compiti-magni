@@ -1,7 +1,7 @@
-package ge.zgharbi.todocat
+package ge.zgharbi.ms.id
 package protocol.tasks
 
-import ge.zgharbi.todocat.managers.task.TaskItem
+import managers.task.TaskItem
 import zio.json.*
 
 case class TaskItemDto(

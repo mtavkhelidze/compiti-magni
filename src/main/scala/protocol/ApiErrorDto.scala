@@ -1,8 +1,8 @@
-package ge.zgharbi.todocat
+package ge.zgharbi.ms.id
 package protocol
 
 import managers.task.TitleValidationError
-import managers.AlgebraError
+import managers.ManagerError
 
 import zio.http.Status
 import zio.json.*
@@ -17,13 +17,13 @@ case class ApiErrorDto(
 )
 
 object ApiErrorDto {
-  extension [E <: AlgebraError[E]](e: E) {
+  extension [E <: ManagerError[E]](e: E) {
     inline def statusCode: Status = e match {
       case _: TitleValidationError => Status.Created
       case _                       => Status.fromInt(400)
     }
   }
-  inline def apply[E <: AlgebraError[E]](e: E): ApiErrorDto = {
+  inline def apply[E <: ManagerError[E]](e: E): ApiErrorDto = {
     ApiErrorDto(
       code = e.statusCode.code,
       message = e.message,

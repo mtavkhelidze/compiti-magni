@@ -6,7 +6,7 @@ lazy val root = project
     name := "CompitiMagni",
     version := "0.1.0-SNAPSHOT",
     scalaVersion := scala3Version,
-    idePackagePrefix := Some("ge.zgharbi.todocat"),
+    idePackagePrefix := Some("ge.zgharbi.ms.id"),
     testFrameworks += new TestFramework("weaver.framework.CatsEffect"),
     libraryDependencies ++= Seq(
       "com.softwaremill.sttp.tapir" %% "tapir-json-zio" % "1.11.25",

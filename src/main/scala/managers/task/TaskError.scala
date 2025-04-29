@@ -1,13 +1,13 @@
-package ge.zgharbi.todocat
+package ge.zgharbi.ms.id
 package managers.task
 
-import managers.AlgebraError
+import managers.ManagerError
 
 import com.sun.tools.javac.code.TypeTag
 
 import scala.compiletime.constValue
 
-sealed trait TasksError[T] extends AlgebraError[T]
+sealed trait TasksError[T] extends ManagerError[T]
 
 case class TitleValidationError(
   override val message: String,
