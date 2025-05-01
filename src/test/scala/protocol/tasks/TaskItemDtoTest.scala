@@ -1,8 +1,8 @@
-package ge.zgharbi.ms.id
+package ge.zgharbi.app.compiti
 package protocol.tasks
 
 import domain.DomainId
-import managers.task.TaskManager
+import managers.task.IdManager
 
 import zio.*
 import zio.test.*

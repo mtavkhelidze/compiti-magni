@@ -2,13 +2,10 @@
 
 ### API
 
-| Method | Path        | Description    |
-|--------|-------------|----------------|
-| GET    | /tasks      | Get all tasks  |
-| GET    | /tasks/{id} | Get task by id |
-| POST   | /tasks      | Create task    |
-| PUT    | /tasks/{id} | Update task    |
-| DELETE | /tasks/{id} | Delete task    |
+| Method | Path        | Description              |
+|--------|-------------|--------------------------|
+| GET    | /uuid       | Get UUID Id              |
+| GET    | /cardano    | Get Cardano generated Id |
 
 ### Internal Error Handling Example
 

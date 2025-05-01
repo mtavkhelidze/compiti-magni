@@ -1,4 +1,4 @@
-package ge.zgharbi.ms.id
+package ge.zgharbi.app.compiti
 package protocol.tasks
 
 import managers.task.TaskItem

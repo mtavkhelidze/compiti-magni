@@ -1,18 +1,18 @@
-package ge.zgharbi.ms.id
+package ge.zgharbi.app.compiti
 package managers.task
 
 import managers.IdManager
 
 import zio.*
 
-trait TaskManager {
-  def create(
+trait IdManager {
+  def uuid(
     title: String,
     description: String,
   ): ZIO[IdManager, Throwable, TaskItem]
 }
 
-object TaskManager {
+object IdManager {
 //  def live: ZLayer[IdManager, Throwable, TaskManager] =
 //    ZLayer.succeed(new TaskManager {
 //      def create(title: String, description: String) =
