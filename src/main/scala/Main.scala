@@ -1,4 +1,4 @@
-package ge.zgharbi.app.compiti
+package ge.zgharbi.compiti
 
 import domain.DomainError
 import domain.DomainError.*

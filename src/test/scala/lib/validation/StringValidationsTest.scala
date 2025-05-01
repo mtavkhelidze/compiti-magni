@@ -1,4 +1,4 @@
-package ge.zgharbi.app.compiti
+package ge.zgharbi.compiti
 package lib
 
 import lib.validation.StringValidation.*

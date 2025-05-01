@@ -1,4 +1,4 @@
-package ge.zgharbi.app.compiti
+package ge.zgharbi.compiti
 package managers
 
 import scala.reflect.{classTag, ClassTag}

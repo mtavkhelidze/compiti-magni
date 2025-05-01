@@ -1,4 +1,4 @@
-package ge.zgharbi.app.compiti
+package ge.zgharbi.compiti
 package services
 
 import domain.{DomainError, UniId, WithMessage}
