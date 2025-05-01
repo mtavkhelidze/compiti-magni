@@ -5,14 +5,14 @@ import managers.IdManager
 
 import zio.*
 
-trait IdManager {
+trait TaskManager {
   def uuid(
     title: String,
     description: String,
-  ): ZIO[IdManager, Throwable, TaskItem]
+  ): ZIO[TaskManager, Throwable, TaskItem]
 }
 
-object IdManager {
+object TaskManager {
 //  def live: ZLayer[IdManager, Throwable, TaskManager] =
 //    ZLayer.succeed(new TaskManager {
 //      def create(title: String, description: String) =

@@ -2,7 +2,7 @@ package ge.zgharbi.app.compiti
 package protocol.tasks
 
 import domain.DomainId
-import managers.task.IdManager
+import managers.task.TaskManager
 
 import zio.*
 import zio.test.*
